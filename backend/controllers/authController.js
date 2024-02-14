@@ -16,11 +16,46 @@ exports.signup = catchAsync(async (req, res, next) => {
     emailAddress,
     password: hashedPassword,
   });
-
-  res.send({
-    status: "success",
-    user: _.omit(newUser.toJSON(), "password"),
-  });
+  const token = newUser.generateAuthToken();
+  console.log(token);
+  res
+    .cookie("jwt", token, {
+      httpOnly: true,
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+    })
+    .send({
+      status: "success",
+      user: _.omit(newUser.toJSON(), "password"),
+    });
 });
 
-exports.login = (req, res) => {};
+exports.login = catchAsync(async (req, res, next) => {
+  const { emailAddress, password } = req.body;
+
+  let user = await User.findAll({
+    where: {
+      emailAddress,
+    },
+  });
+
+  if (user[0] === undefined) {
+    return next(new AppError("Incorrect email or password", 400));
+  }
+
+  user = user[0];
+  if ((await user.comparePasswords(password, user.password)) === false) {
+    return next(new AppError("Incorrect email or password", 400));
+  }
+
+  const token = user.generateAuthToken();
+  console.log(token);
+  res
+    .cookie("jwt", token, {
+      httpOnly: true,
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+    })
+    .send({
+      status: "success",
+      user: _.omit(user.toJSON(), "password"),
+    });
+});

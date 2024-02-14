@@ -1,10 +1,22 @@
 const Joi = require("joi");
 const { DataTypes, Model } = require("sequelize");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 const { v4: uuidv4 } = require("uuid");
 const { sequelize } = require("../database/db");
 
 class User extends Model {
-  // hashPassword
+  async comparePasswords(userPwd, currentHash) {
+    return await bcrypt.compare(userPwd, currentHash);
+  }
+
+  generateAuthToken() {
+    const token = jwt.sign({ uuid: this.uuid }, process.env.JWT_SECRET_KEY, {
+      expiresIn: process.env.JWT_EXPIRES_IN,
+    });
+
+    return token;
+  }
 }
 
 User.init(
@@ -33,6 +45,10 @@ User.init(
     },
     country: {
       type: DataTypes.STRING,
+    },
+    emailVerified: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
   },
   {
