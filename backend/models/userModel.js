@@ -2,7 +2,10 @@ const Joi = require("joi");
 const { DataTypes, Model } = require("sequelize");
 const { v4: uuidv4 } = require("uuid");
 const { sequelize } = require("../database/db");
-class User extends Model {}
+
+class User extends Model {
+  // hashPassword
+}
 
 User.init(
   {
