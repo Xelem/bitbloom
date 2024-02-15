@@ -30,6 +30,9 @@ User.init(
     fullName: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        len: [8, 255],
+      },
     },
     emailAddress: {
       type: DataTypes.STRING,

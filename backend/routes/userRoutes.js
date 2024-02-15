@@ -1,7 +1,10 @@
 const express = require("express");
-const { signup, login } = require("../controllers/authController");
+const { getCurrentUser, updateUser } = require("../controllers/userController");
+const verifyJwt = require("../middlewares/auth");
 const router = express.Router();
 
-router.post("");
+router.use(verifyJwt);
+router.get("/me", getCurrentUser);
+router.patch("/", updateUser);
 
 module.exports = router;
