@@ -1,6 +1,7 @@
 const Joi = require("joi");
 const { DataTypes, Model } = require("sequelize");
 const bcrypt = require("bcryptjs");
+const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 const { v4: uuidv4 } = require("uuid");
 const { sequelize } = require("../database/db");
@@ -8,6 +9,17 @@ const { sequelize } = require("../database/db");
 class User extends Model {
   async comparePasswords(userPwd, currentHash) {
     return await bcrypt.compare(userPwd, currentHash);
+  }
+
+  generateEmailToken() {
+    const emailToken = crypto.randomBytes(32).toString("hex");
+
+    this.emailConfirmToken = crypto
+      .createHash("sha256")
+      .update(emailToken)
+      .digest("hex");
+
+    return emailToken;
   }
 
   generateAuthToken() {
@@ -47,6 +59,9 @@ User.init(
       type: DataTypes.DATEONLY,
     },
     country: {
+      type: DataTypes.STRING,
+    },
+    emailConfirmToken: {
       type: DataTypes.STRING,
     },
     emailVerified: {

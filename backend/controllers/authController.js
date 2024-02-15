@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 const _ = require("lodash");
 const AppError = require("../utils/appError");
 const catchAsync = require("../utils/catchAsync");
+const sendEmail = require("../utils/email");
 
 exports.signup = catchAsync(async (req, res, next) => {
   const { error } = validateUser(req.body);
@@ -16,6 +17,8 @@ exports.signup = catchAsync(async (req, res, next) => {
     emailAddress,
     password: hashedPassword,
   });
+
+  newUser.generateEmailToken();
   const token = newUser.generateAuthToken();
   console.log(token);
   res
@@ -25,7 +28,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     })
     .send({
       status: "success",
-      user: _.omit(newUser.toJSON(), "password"),
+      user: _.omit(newUser.toJSON(), ["password", "emailConfirmToken"]),
     });
 });
 
@@ -58,4 +61,26 @@ exports.login = catchAsync(async (req, res, next) => {
       status: "success",
       user: _.omit(user.toJSON(), "password"),
     });
+});
+
+exports.verifyEmail = catchAsync(async (req, res, next) => {
+  const user = req.user;
+  const token = user.emailConfirmToken;
+
+  const confirmEmailUrl = `https://learn-kdp-git-master-xelem.vercel.app/confirm_email/${token}`;
+
+  const message = `<p>Hello ${user.username}</p>s
+    <p>
+    Thank you for signing up to KDP Learn! We are delighted to have you
+    onboard. Please click on the link below to confirm your email address
+    </p>
+    </p>
+    <a href="${confirmEmailUrl}" target="_blank"><button>Confirm Email</button></a>
+    <p>`;
+
+  await sendEmail(res, {
+    email: "texter@mailsac.com",
+    subject: "Email Verification: Verify your email",
+    message,
+  });
 });
