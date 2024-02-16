@@ -70,8 +70,8 @@ User.prototype.generateAuthToken = function () {
 
 User.hasOne(Wallet, { foreignKey: "walletID" });
 Wallet.belongsTo(User, { foreignKey: "walletID" });
-User.hasMany(Transaction, { foreignKey: "transactionID" });
-Transaction.belongsTo(User, { foreignKey: "transactionID" });
+User.hasMany(Transaction, { foreignKey: "userID" });
+Transaction.belongsTo(User, { foreignKey: "userID" });
 
 function validateUser(user) {
   const schema = Joi.object({

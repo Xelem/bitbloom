@@ -10,7 +10,7 @@ const Wallet = sequelize.define("Wallet", {
     defaultValue: () => uuidv4(),
   },
   availableBal: {
-    type: DataTypes.DECIMAL,
+    type: DataTypes.INTEGER,
     defaultValue: 0,
   },
   totalDeposit: {
