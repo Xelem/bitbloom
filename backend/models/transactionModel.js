@@ -2,25 +2,21 @@ const { sequelize } = require("../database/db");
 const { DataTypes } = require("sequelize");
 const { v4: uuidv4 } = require("uuid");
 
-const Wallet = sequelize.define("Wallet", {
+const Transaction = sequelize.define("Transaction", {
   uuid: {
     type: DataTypes.UUID,
     allowNull: false,
     primaryKey: true,
     defaultValue: () => uuidv4(),
   },
-  availableBal: {
+  amount: {
     type: DataTypes.DECIMAL,
-    defaultValue: 0,
+    allowNull: false,
   },
-  totalDeposit: {
-    type: DataTypes.INTEGER,
-    defaultValue: 0,
-  },
-  totalWithdrawal: {
-    type: DataTypes.INTEGER,
-    defaultValue: 0,
+  type: {
+    type: DataTypes.ENUM("withdrawal", "deposit"),
+    allowNull: false,
   },
 });
 
-module.exports = Wallet;
+module.exports = Transaction;

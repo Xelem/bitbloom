@@ -5,6 +5,7 @@ const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 const { sequelize } = require("../database/db");
 const Wallet = require("./walletModel");
+const Transaction = require("./transactionModel");
 
 const User = sequelize.define("User", {
   uuid: {
@@ -69,6 +70,8 @@ User.prototype.generateAuthToken = function () {
 
 User.hasOne(Wallet, { foreignKey: "walletID" });
 Wallet.belongsTo(User, { foreignKey: "walletID" });
+User.hasMany(Transaction, { foreignKey: "transactionID" });
+Transaction.belongsTo(User, { foreignKey: "transactionID" });
 
 function validateUser(user) {
   const schema = Joi.object({
