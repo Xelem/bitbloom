@@ -4,6 +4,7 @@ const _ = require("lodash");
 const AppError = require("../utils/appError");
 const catchAsync = require("../utils/catchAsync");
 const sendEmail = require("../utils/email");
+const Wallet = require("../models/walletModel");
 
 exports.signup = catchAsync(async (req, res, next) => {
   const { error } = validateUser(req.body);
@@ -17,6 +18,10 @@ exports.signup = catchAsync(async (req, res, next) => {
     emailAddress,
     password: hashedPassword,
   });
+
+  const newUserWallet = await Wallet.create();
+
+  await newUser.setWallet(newUserWallet);
 
   newUser.generateEmailToken();
   const token = newUser.generateAuthToken();

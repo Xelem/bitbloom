@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const { User } = require("../models/userModel");
+const Wallet = require("../models/walletModel");
 const AppError = require("../utils/appError");
 const catchAsync = require("../utils/catchAsync");
 
@@ -12,6 +13,7 @@ const verifyJwt = catchAsync(async (req, res, next) => {
     where: {
       uuid: payload.uuid,
     },
+    include: Wallet,
   });
   if (!user) return next(new AppError("You are not logged in", 401));
 
