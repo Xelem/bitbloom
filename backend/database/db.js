@@ -1,13 +1,18 @@
 const { Sequelize } = require("sequelize");
 
+const devDB = {
+  username: "postgres",
+  password: process.env.POSTGRES_PASSWORD,
+  database: "coingrove",
+  host: "localhost",
+  dialect: "postgres",
+};
+
 const sequelize = new Sequelize(
-  "coingrove",
-  "postgres",
-  process.env.POSTGRES_PASSWORD,
-  {
-    host: "localhost",
-    dialect: "postgres",
-  }
+  devDB.database,
+  devDB.username,
+  devDB.password,
+  devDB
 );
 
 const connectDB = async () => {

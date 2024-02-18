@@ -5,45 +5,52 @@ const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 const { sequelize } = require("../database/db");
 const Wallet = require("./walletModel");
+const bcrypt = require("bcryptjs");
 const Transaction = require("./transactionModel");
 
-const User = sequelize.define("User", {
-  uuid: {
-    type: DataTypes.UUID,
-    allowNull: false,
-    primaryKey: true,
-    defaultValue: () => uuidv4(),
-  },
-  fullName: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    validate: {
-      len: [8, 255],
+const User = sequelize.define(
+  "User",
+  {
+    uuid: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      primaryKey: true,
+      defaultValue: () => uuidv4(),
+    },
+    fullName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [8, 255],
+      },
+    },
+    emailAddress: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    dateOfBirth: {
+      type: DataTypes.DATEONLY,
+    },
+    country: {
+      type: DataTypes.STRING,
+    },
+    emailConfirmToken: {
+      type: DataTypes.STRING,
+    },
+    emailVerified: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
   },
-  emailAddress: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
-  },
-  password: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  dateOfBirth: {
-    type: DataTypes.DATEONLY,
-  },
-  country: {
-    type: DataTypes.STRING,
-  },
-  emailConfirmToken: {
-    type: DataTypes.STRING,
-  },
-  emailVerified: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
-  },
-});
+  {
+    tableName: "users",
+  }
+);
 
 User.prototype.comparePasswords = async function (userPwd, currentHash) {
   return await bcrypt.compare(userPwd, currentHash);
