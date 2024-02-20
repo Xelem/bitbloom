@@ -4,5 +4,10 @@ export default {
   theme: {
     extend: {},
   },
+  colors: {
+    mainPurple: "#7525CC",
+    deepPurple: "#462C74",
+    lightBlue: "21C1EE",
+  },
   plugins: [],
 };
