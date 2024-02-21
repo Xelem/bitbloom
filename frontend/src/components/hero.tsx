@@ -18,12 +18,12 @@ const Hero = () => {
           </p>
         </div>
         <div className="py-4">
-          <h1 className="text-5xl leading-tight md:text-6xl">
+          <h1 className="text-5xl leading-tight font-semibold md:text-6xl">
             Artificial Intelligence Crypto Revolution
           </h1>
           <p className="text-lg leading-loose py-4">
             We have over 15 year exprience in business consultting arena. We
-            have over 15 year exprience in business consultting arena and
+            have over 15 year exprience in business consulting arena and
             artficial intelligence.
           </p>
           <div className="space-x-8 mt-4 transition-all duration-200 ease-in-out">
@@ -35,9 +35,6 @@ const Hero = () => {
             </a>
           </div>
         </div>
-      </div>
-      <div>
-        <img src="" alt="" />
       </div>
     </div>
   );
