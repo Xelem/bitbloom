@@ -8,7 +8,9 @@ const Navbar = () => {
   return (
     <div className="border-b py-4 px-12  border-gray-500 relative">
       <div className="container mx-auto flex items-center justify-between">
-        <img src={logo} alt="logo" />
+        <a href="/">
+          <img src={logo} alt="logo" />
+        </a>
 
         <ul className="hidden space-x-8 items-center md:flex">
           <a
@@ -32,16 +34,10 @@ const Navbar = () => {
         </ul>
 
         <div className="hidden space-x-4 md:block">
-          <a
-            href="/auth/signin"
-            className="border-2 rounded-full px-4 py-2 border-mainPurple duration-200 uppercase hover:bg-mainPurple"
-          >
+          <a href="/auth/signin" className="button-outline">
             Login
           </a>
-          <a
-            href="/auth/signup"
-            className="border-2 rounded-full px-4 py-2 border-mainPurple duration-200 uppercase bg-mainPurple hover:bg-transparent"
-          >
+          <a href="/auth/signup" className="button-fill">
             Signup
           </a>
         </div>
