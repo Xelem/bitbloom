@@ -6,9 +6,9 @@ import Navbar from "../components/navbar";
 const RootLayout = () => {
   return (
     <main>
-      <Navbar />
+      {/* <Navbar /> */}
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 };
