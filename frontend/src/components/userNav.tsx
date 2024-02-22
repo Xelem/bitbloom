@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { FaUser } from "react-icons/fa";
+import { FaRegUserCircle } from "react-icons/fa";
+import { FaAngleDown } from "react-icons/fa6";
 import logo from "../assets/coingrove.png";
 import { Link } from "react-router-dom";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
@@ -20,17 +21,28 @@ const UserNav = () => {
 
   return (
     <div className="border-b py-4 px-12 md:px-4 border-gray-500 flex">
-      <div className="mx-auto flex items-center w-[100%] justify-between">
+      <div className="mx-auto flex items-center w-[100%]">
         <div className="flex items-center">
           <img src={logo} alt="logo" />
           <p className="text-2xl ml-4">CoinGrove</p>
         </div>
 
-        <div className="md:hidden">
+        <div className="md:hidden ml-auto">
           <AiOutlineMenu
             className="h-8 w-8 transition ease-in-out"
             onClick={() => setIsOpen(true)}
           />
+        </div>
+
+        <div className="ml-auto hidden md:block">
+          <div className="flex space-x-4 items-center rounded-lg">
+            <FaRegUserCircle className="w-10 h-10" />
+            <div>
+              <p className="text-center">Username</p>
+              <p className="text-center">useremail@email.com</p>
+              <p className="text-center text-sm text-green-500">Verified</p>
+            </div>
+          </div>
         </div>
       </div>
       <div
@@ -52,7 +64,36 @@ const UserNav = () => {
           />
         </div>
 
-        <ul className="flex flex-col space-y-8 mt-[25%]">
+        <Link
+          to={"/user/profile"}
+          className="md:hidden flex justify-between items-center my-8 bg-mainPurple p-4 rounded-lg"
+        >
+          <FaRegUserCircle className="w-10 h-10" />
+          <div>
+            <p className="text-center">Username</p>
+            <p className="text-center">useremail@email.com</p>
+            <p className="text-center text-sm text-green-500">Verified</p>
+          </div>
+          <FaAngleDown />
+        </Link>
+
+        <div className="my-8">
+          <p className="uppercase text-gray-400 font-semibold">
+            Main account balance
+          </p>
+          <p className="text-xl">0.00 USD</p>
+
+          <div className="flex space-x-4 items-center my-8">
+            <button className="user-button">
+              <Link to={"/user/wallet"}>Deposit</Link>
+            </button>
+            <button className="user-button">
+              <Link to={"/user/wallet"}>Withdraw</Link>
+            </button>
+          </div>
+        </div>
+
+        <ul className="flex flex-col space-y-8 mt-8">
           <li
             className="border-b border-gray-600 py-2 uppercase hover:text-lightBlue hover:-translate-y-2 hover:cursor-pointer transition-all duration-200 ease-in-out"
             onClick={() => {
@@ -98,7 +139,7 @@ const UserNav = () => {
             <Link to={"/user/plans"}>Our Plans</Link>
           </li>
           <li
-            className="border-b border-gray-600 py-2 uppercase hover:text-lightBlue hover:-translate-y-2 hover:cursor-pointer transition-all duration-200 ease-in-out"
+            className="hidden md:block border-b border-gray-600 py-2 uppercase hover:text-lightBlue hover:-translate-y-2 hover:cursor-pointer transition-all duration-200 ease-in-out"
             onClick={() => {
               console.log(isMobile);
               if (isMobile) {

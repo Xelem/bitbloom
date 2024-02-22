@@ -12,6 +12,10 @@ body {
   color: white;
 }
 
+.button {
+  @apply rounded-xl px-4 py-2 transition-all duration-200 ease-in-out uppercase;
+}
+
 .button-outline {
   @apply border-2 rounded-full px-4 py-2 border-mainPurple duration-200 ease-in-out uppercase hover:bg-mainPurple;
 }
@@ -26,4 +30,8 @@ body {
 
 .button-gradient:hover {
   @apply bg-gradient-to-r from-mainPurple to-lightBlue;
+}
+
+.user-button {
+  @apply rounded-xl px-4 py-2 transition-all duration-200 ease-in-out uppercase bg-lightBlue hover:bg-opacity-90;
 }
