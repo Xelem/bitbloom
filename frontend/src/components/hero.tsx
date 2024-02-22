@@ -12,7 +12,7 @@ const Hero = () => {
     >
       <div className="max-w-xl mt-8">
         <div className="bg-[#a166e3] border rounded-full p-2 flex items-center justify-center md:w-[60%] text-center">
-          <AiOutlineDollar className="w-8 h-8 mr-1" />
+          <AiOutlineDollar className="md:w-8 md:h-8 w-6 h-6 mr-1" />
           <p className="transition-all duration-200 leading-loose ease-in-out opacity-90 hover:opacity-100">
             Discover new ways to grow your wealth!
           </p>
@@ -30,8 +30,8 @@ const Hero = () => {
             <a href="/auth/signup" className="button-gradient">
               Signup
             </a>
-            <a href="/auth/signin" className="button-gradient">
-              Signin
+            <a href="/auth/login" className="button-gradient">
+              Login
             </a>
           </div>
         </div>

@@ -5,7 +5,7 @@ import { LuDot } from "react-icons/lu";
 
 const About = () => {
   return (
-    <div className="md:px-12 px-8 mx-auto">
+    <div id="about" className="md:px-12 px-8 mx-auto">
       <div className="flex flex-col my-12 items-center justify-between md:flex-row">
         <div>
           <img src={imgOne} alt="an image" className="w-[600px]" />

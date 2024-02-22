@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import { LuDot } from "react-icons/lu";
 
-const Signup = () => {
+const Login = () => {
   type Focused = {
-    fullName: boolean;
     email: boolean;
     password: boolean;
   };
 
   const [isFocused, setIsFocused] = useState<Focused>({
-    fullName: false,
     email: false,
     password: false,
   });
@@ -29,7 +27,7 @@ const Signup = () => {
 
           <div className="text-center max-w-lg mx-auto">
             <h1 className="text-3xl leading-tight font-semibold my-4 md:text-4xl">
-              Signup
+              Login
             </h1>
           </div>
 
@@ -40,21 +38,6 @@ const Signup = () => {
             }}
           >
             <div className="w-[100%] md:w-[50%]">
-              <div className="relative flex flex-col pt-12 mb-2">
-                <input
-                  type="text"
-                  className="border-b border-white text-white bg-transparent outline-0 z-10 px-1"
-                  onFocus={() => setIsFocused({ ...isFocused, fullName: true })}
-                  onBlur={() => setIsFocused({ ...isFocused, fullName: false })}
-                />
-                <label
-                  className={`absolute text-sm italic bottom-0 transition-all duration-200 ease-in-out ${
-                    !isFocused.fullName ? "-translate-y-2" : "-translate-y-6"
-                  }`}
-                >
-                  Full Name
-                </label>
-              </div>
               <div className="relative flex flex-col pt-12 mb-2">
                 <input
                   type="email"
@@ -87,16 +70,17 @@ const Signup = () => {
               </div>
 
               <div className="flex items-center justify-center pt-8">
-                <button className="button-gradient">Signup</button>
+                <button className="button-gradient">Login</button>
               </div>
             </div>
           </form>
+
           <div>
             <p className="text-center">
-              Already have an account?
-              <a href="/auth/login" className="underline underline-offset-2">
+              Don't have an account?
+              <a href="/auth/signup" className="underline underline-offset-2">
                 {" "}
-                Login
+                Signup
               </a>
             </p>
           </div>
@@ -106,4 +90,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Login;

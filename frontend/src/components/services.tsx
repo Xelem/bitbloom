@@ -4,7 +4,7 @@ import { GrSettingsOption } from "react-icons/gr";
 
 const Services = () => {
   return (
-    <div className="md:px-12 px-8 mx-auto">
+    <div id="services" className="md:px-12 px-8 mx-auto">
       <div>
         <div className="flex items-center justify-center">
           <LuDot className="text-lightBlue inline w-12 h-12 mx-[-17px]" />

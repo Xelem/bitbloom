@@ -13,28 +13,22 @@ const Navbar = () => {
         </a>
 
         <ul className="hidden space-x-8 items-center md:flex">
-          <a
-            href="/"
-            className="uppercase text-sm ease-in-out duration-200 hover:font-bold hover:cursor-pointer"
-          >
-            Home
-          </a>
-          <a
-            href="/about"
-            className="uppercase text-sm ease-in-out duration-200 hover:font-bold hover:cursor-pointer"
-          >
-            About
-          </a>
-          <a
-            href="/contact"
-            className="uppercase text-sm ease-in-out duration-200 hover:font-bold hover:cursor-pointer"
-          >
-            Contact
-          </a>
+          <li className="uppercase text-sm ease-in-out duration-200 hover:font-bold hover:cursor-pointer">
+            <a href="/">Home</a>
+          </li>
+          <li className="uppercase text-sm ease-in-out duration-200 hover:font-bold hover:cursor-pointer">
+            <a href="#about">About</a>
+          </li>
+          <li className="uppercase text-sm ease-in-out duration-200 hover:font-bold hover:cursor-pointer">
+            <a href="#services">Services</a>
+          </li>
+          <li className="uppercase text-sm ease-in-out duration-200 hover:font-bold hover:cursor-pointer">
+            <a href="#contact">Contact</a>
+          </li>
         </ul>
 
         <div className="hidden space-x-4 md:block">
-          <a href="/auth/signin" className="button-outline">
+          <a href="/auth/login" className="button-outline">
             Login
           </a>
           <a href="/auth/signup" className="button-fill">
@@ -60,16 +54,37 @@ const Navbar = () => {
       <div
         className={`${
           isOpen ? "" : "hidden"
-        } absolute left-0 bg-deepPurple w-[100%] px-12 py-4 duration-200 ease-in-out md:hidden`}
+        } absolute left-0 bg-deepPurple w-[100%] px-12 py-4 duration-200 z-10 ease-in-out md:hidden`}
       >
         <ul className="flex flex-col space-y-8">
-          <li className="border-b border-gray-600 py-2 uppercase">Home</li>
-          <li className="border-b border-gray-600 py-2 uppercase">About</li>
-          <li className="border-b border-gray-600 py-2 uppercase">Contact</li>
+          <li
+            className="border-b border-gray-600 py-2 uppercase"
+            onClick={() => setIsOpen(false)}
+          >
+            <a href="/">Home</a>
+          </li>
+          <li
+            className="border-b border-gray-600 py-2 uppercase"
+            onClick={() => setIsOpen(false)}
+          >
+            <a href="#about">About</a>
+          </li>
+          <li
+            className="border-b border-gray-600 py-2 uppercase"
+            onClick={() => setIsOpen(false)}
+          >
+            <a href="#services">Services</a>
+          </li>
+          <li
+            className="border-b border-gray-600 py-2 uppercase"
+            onClick={() => setIsOpen(false)}
+          >
+            <a href="#contact">Contact</a>
+          </li>
         </ul>
         <div className="my-8 flex space-x-4">
           <a
-            href="/auth/signin"
+            href="/auth/login"
             className="border-2 rounded-full px-4 py-2 border-mainPurple text-center duration-200 uppercase w-[100%] hover:bg-mainPurple"
           >
             Login
