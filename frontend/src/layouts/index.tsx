@@ -9,7 +9,7 @@ const RootLayout = () => {
     <main>
       {/* <Navbar /> */}
       <UserNav />
-      <div className="ml-[25%]">
+      <div className="md:ml-[25%] mt-[25%] md:mt-[10%] overflow-x-auto">
         <Outlet />
       </div>
       {/* <Footer /> */}

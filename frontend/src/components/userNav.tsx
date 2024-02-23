@@ -20,7 +20,7 @@ const UserNav = () => {
   }, []);
 
   return (
-    <div className="border-b py-4 px-12 md:px-4 border-gray-500 flex">
+    <div className="border-b py-4 px-12 md:px-4 border-gray-500 flex z-10 fixed right-0  top-0 left-0 bg-deepPurple">
       <div className="mx-auto flex items-center w-[100%]">
         <div className="flex items-center">
           <img src={logo} alt="logo" />
