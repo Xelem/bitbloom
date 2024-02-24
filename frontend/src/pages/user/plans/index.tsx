@@ -62,7 +62,7 @@ const Plans = () => {
   ];
 
   return (
-    <div className="md:p-8 p-4">
+    <div className="p-8">
       <h1 className="text-4xl font-semibold mb-8">Investment Plans</h1>
 
       <div className="grid md:grid-cols-3 gap-4">

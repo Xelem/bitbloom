@@ -20,7 +20,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-4 my-12">
+      <div className="grid md:grid-cols-3 gap-4 my-6">
         <div className="p-8 rounded-lg border-b-2 border-lightBlue bg-mainPurple">
           <p className="font-semibold text-xl">Available Balance</p>
           <p className="text-3xl mt-4">
@@ -50,25 +50,29 @@ const Dashboard = () => {
           <p className="text-gray-300 uppercase opacity-80 md:text-center">
             Description
           </p>
-          <p className="text-gray-300 uppercase opacity-80 md:text-center">
+          <p className="text-gray-300 uppercase opacity-80 text-center">
             Status
           </p>
         </div>
         <div className="grid grid-cols-3 gap-4 my-3 hover:bg-deepPurple p-2 rounded-md transition-all duration-200 ease-in-out">
-          <p className="text-white uppercase opacity-80 md:text-center">$500</p>
-          <p className="uppercase opacity-80 md:text-center text-deposit-500 text-green-500">
+          <p className="text-white uppercase bg-opacity-80 md:text-center">
+            $500
+          </p>
+          <p className="uppercase bg-opacity-80 md:text-center text-deposit-500 text-green-500">
             Deposit
           </p>
-          <p className="uppercase opacity-80 md:text-center text-green-500">
+          <p className="uppercase bg-opacity-80 md:text-center text-green-500">
             Successful
           </p>
         </div>
         <div className="grid grid-cols-3 my-3 hover:bg-deepPurple p-2 rounded-md transition-all duration-200 ease-in-out">
-          <p className="text-white uppercase opacity-80 md:text-center">$150</p>
-          <p className="uppercase opacity-80 md:text-center text-deposit-500 text-red-500">
+          <p className="text-white uppercase bg-opacity-80 md:text-center">
+            $150
+          </p>
+          <p className="uppercase bg-opacity-80 md:text-center text-deposit-500 text-red-500">
             Withdraw
           </p>
-          <p className="uppercase opacity-80 md:text-center text-green-500">
+          <p className="uppercase bg-opacity-80 md:text-center text-green-500">
             Successful
           </p>
         </div>
