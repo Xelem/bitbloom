@@ -21,7 +21,7 @@ const Contact = () => {
     <div id="contact">
       <div className="md:px-12 px-8 mx-auto bg-gradient-to-r from-mainPurple to-lightBlue py-12">
         <div>
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center" data-aos="fade-up">
             <LuDot className="text-lightBlue inline w-12 h-12 mx-[-17px]" />
             <LuDot className="text-mainPurple inline w-12 h-12 mx-[-17px]" />
             <LuDot className="text-red-600 inline w-12 h-12 mx-[-17px]" />
@@ -30,7 +30,7 @@ const Contact = () => {
             <LuDot className="text-blue-600 inline w-12 h-12 mx-[-17px]" />
           </div>
 
-          <div className="text-center max-w-lg mx-auto">
+          <div className="text-center max-w-lg mx-auto" data-aos="zoom-in">
             <h1 className="text-3xl leading-tight font-semibold my-4 md:text-4xl">
               Contact Us
             </h1>
@@ -50,6 +50,7 @@ const Contact = () => {
               <div className="flex flex-col md:flex-row justify-center space-y-12 md:space-y-0 md:space-x-4 w-[100%]">
                 <div className="relative flex flex-col md:w-[50%]">
                   <input
+                    data-aos="fade-left"
                     type="text"
                     className="border-b border-white text-white bg-transparent outline-0 z-10 px-1"
                     onFocus={() => setIsFocused({ ...isFocused, name: true })}
@@ -65,6 +66,7 @@ const Contact = () => {
                 </div>
                 <div className="relative flex flex-col md:w-[50%]">
                   <input
+                    data-aos="fade-left"
                     type="text"
                     className="border-b border-white text-white bg-transparent outline-0 z-10 px-1"
                     onFocus={() => setIsFocused({ ...isFocused, email: true })}
@@ -81,6 +83,7 @@ const Contact = () => {
               </div>
               <div className="relative flex flex-col pt-12 mb-2">
                 <input
+                  data-aos="fade-left"
                   type="text"
                   className="border-b border-white text-white bg-transparent outline-0 z-10 px-1"
                   onFocus={() => setIsFocused({ ...isFocused, subject: true })}
@@ -96,6 +99,7 @@ const Contact = () => {
               </div>
               <div className="relative flex flex-col pt-8 md:pt-12">
                 <textarea
+                  data-aos="fade-left"
                   rows={3}
                   className="border-b border-white text-white bg-transparent outline-0 z-10 px-1"
                   onFocus={() => setIsFocused({ ...isFocused, message: true })}
@@ -111,7 +115,10 @@ const Contact = () => {
                   Message
                 </label>
               </div>
-              <div className="flex items-center justify-center py-8">
+              <div
+                className="flex items-center justify-center py-8"
+                data-aos="fade-up"
+              >
                 <button className="button-gradient">Submit</button>
               </div>
             </div>

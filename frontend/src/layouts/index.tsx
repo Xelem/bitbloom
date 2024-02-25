@@ -7,12 +7,13 @@ import UserNav from "../components/userNav";
 const RootLayout = () => {
   return (
     <main>
-      {/* <Navbar /> */}
-      <UserNav />
-      <div className="md:ml-[25%] mt-[25%] md:mt-[10%] overflow-x-auto">
+      <Navbar />
+      {/* <UserNav /> */}
+      {/* <div className="md:ml-[25%] mt-[25%] md:mt-[5%] overflow-x-auto bg-white"> */}
+      <div>
         <Outlet />
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </main>
   );
 };

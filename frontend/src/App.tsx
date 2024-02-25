@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -14,8 +14,17 @@ import Plans from "./pages/user/plans";
 import Profile from "./pages/user/profile";
 import Transactions from "./pages/user/transactions";
 import Wallet from "./pages/user/wallet";
+import AOS from "aos";
 
 function App() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1500,
+      easing: "ease",
+      once: true,
+    });
+  }, []);
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>

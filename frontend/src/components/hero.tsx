@@ -10,7 +10,7 @@ const Hero = () => {
         backgroundImage: `url(${bgImg})`,
       }}
     >
-      <div className="max-w-xl mt-8">
+      <div className="max-w-xl mt-8" data-Aos="fade-up">
         <div className="bg-[#a166e3] border rounded-full p-2 flex items-center justify-center md:w-[60%] text-center">
           <AiOutlineDollar className="md:w-8 md:h-8 w-6 h-6 mr-1" />
           <p className="transition-all duration-200 leading-loose ease-in-out opacity-90 hover:opacity-100">

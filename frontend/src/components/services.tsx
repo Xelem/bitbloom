@@ -6,7 +6,7 @@ const Services = () => {
   return (
     <div id="services" className="md:px-12 px-8 mx-auto">
       <div>
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center" data-Aos="fade-up">
           <LuDot className="text-lightBlue inline w-12 h-12 mx-[-17px]" />
           <LuDot className="text-mainPurple inline w-12 h-12 mx-[-17px]" />
           <LuDot className="text-red-600 inline w-12 h-12 mx-[-17px]" />
@@ -15,7 +15,7 @@ const Services = () => {
           <LuDot className="text-blue-600 inline w-12 h-12 mx-[-17px]" />
         </div>
 
-        <div className="text-center max-w-lg mx-auto">
+        <div className="text-center max-w-lg mx-auto" data-aos="zoom-in">
           <h1 className="text-3xl leading-tight font-semibold my-4 md:text-4xl">
             Our Core Services
           </h1>
@@ -26,7 +26,10 @@ const Services = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-4 my-12">
-          <div className="border border-lightBlue my-2 p-6 rounded-ss-2xl rounded-ee-2xl">
+          <div
+            data-aos="fade-zoom-out"
+            className="border border-lightBlue my-2 p-6 rounded-ss-2xl rounded-ee-2xl"
+          >
             <div className="my-2">
               <GrSettingsOption className="w-12 h-12 text-lightBlue" />
             </div>
@@ -34,7 +37,7 @@ const Services = () => {
               <h1 className="text-xl leading-tight font-semibold my-4 md:text-2xl">
                 Smart Trading Modules
               </h1>
-              <p className="leading-8 my-4">
+              <p className="leading-8 my-4" data-aos="fade-left">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                 Repudiandae blanditiis voluptate natus. Recusandae quisquam
                 molestias quibusdam quidem! Fuga, cupiditate fugiat velit
@@ -43,7 +46,10 @@ const Services = () => {
               </p>
             </div>
           </div>
-          <div className="border border-lightBlue my-2 p-6 rounded-ss-2xl rounded-ee-2xl">
+          <div
+            data-aos="fade-zoom-out"
+            className="border border-lightBlue my-2 p-6 rounded-ss-2xl rounded-ee-2xl"
+          >
             <div className="my-2">
               <GrSettingsOption className="w-12 h-12 text-lightBlue" />
             </div>
@@ -51,7 +57,7 @@ const Services = () => {
               <h1 className="text-xl leading-tight font-semibold my-4 md:text-2xl">
                 Smart Trading Modules
               </h1>
-              <p className="leading-8 my-4">
+              <p className="leading-8 my-4" data-aos="fade-left">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                 Repudiandae blanditiis voluptate natus. Recusandae quisquam
                 molestias quibusdam quidem! Fuga, cupiditate fugiat velit
@@ -60,7 +66,10 @@ const Services = () => {
               </p>
             </div>
           </div>
-          <div className="border border-lightBlue my-2 p-6 rounded-ss-2xl rounded-ee-2xl">
+          <div
+            data-aos="fade-zoom-out"
+            className="border border-lightBlue my-2 p-6 rounded-ss-2xl rounded-ee-2xl"
+          >
             <div className="my-2">
               <GrSettingsOption className="w-12 h-12 text-lightBlue" />
             </div>
@@ -68,7 +77,7 @@ const Services = () => {
               <h1 className="text-xl leading-tight font-semibold my-4 md:text-2xl">
                 Smart Trading Modules
               </h1>
-              <p className="leading-8 my-4">
+              <p className="leading-8 my-4" data-aos="fade-left">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                 Repudiandae blanditiis voluptate natus. Recusandae quisquam
                 molestias quibusdam quidem! Fuga, cupiditate fugiat velit

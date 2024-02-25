@@ -20,7 +20,7 @@ const UserNav = () => {
   }, []);
 
   return (
-    <div className="border-b py-4 px-12 md:px-4 border-gray-500 flex z-10 fixed right-0  top-0 left-0 bg-deepPurple">
+    <div className="border-b py-4 px-12 md:px-4 border-gray-500 flex h-[15%] z-10 fixed right-0  top-0 left-0 bg-white text-black">
       <div className="mx-auto flex items-center w-[100%]">
         <div className="flex items-center">
           <img src={logo} alt="logo" />
@@ -48,7 +48,7 @@ const UserNav = () => {
       <div
         className={`${
           isOpen ? "" : "hidden"
-        } absolute left-0 top-0 bg-deepPurple w-[100%] h-screen md:w-[25%] px-12 py-4 duration-200 ease-in-out border-r border-gray-500`}
+        } absolute left-0 top-0 bg-white w-[100%] h-screen md:w-[25%] px-12 py-4 duration-200 ease-in-out border-r border-gray-500`}
       >
         <div className="flex items-center">
           <img src={logo} alt="logo" />
