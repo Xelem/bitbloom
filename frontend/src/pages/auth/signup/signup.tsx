@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { LuDot } from "react-icons/lu";
+import Footer from "../../../components/footer";
+import Navbar from "../../../components/navbar";
 
 const Signup = () => {
   type Focused = {
@@ -16,6 +18,7 @@ const Signup = () => {
 
   return (
     <div>
+      <Navbar />
       <div className="md:px-12 px-8 mx-auto bg-gradient-to-r from-mainPurple to-lightBlue py-12">
         <div>
           <div className="flex items-center justify-center">
@@ -102,6 +105,7 @@ const Signup = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
