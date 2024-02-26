@@ -1,7 +1,12 @@
-import * as React from "react";
+import React from "react";
+import LeftSidebar from "../../../components/leftSidebar";
 
 const Wallet = () => {
-  return <p>Wallet</p>;
+  return (
+    <div>
+      <LeftSidebar />
+    </div>
+  );
 };
 
 export default Wallet;

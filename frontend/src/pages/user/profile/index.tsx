@@ -1,31 +1,39 @@
-import * as React from "react";
+import React from "react";
+import InputText from "../../../components/inputText";
+import TextAreaInput from "../../../components/textAreaInput";
+import TitleCard from "../../../components/titleCard";
+import ToogleInput from "../../../components/toogleInput";
 
-const Profile = () => {
+function ProfileSettings() {
   return (
-    <div className="p-8">
-      <h1 className="text-4xl font-semibold mb-8">Profile</h1>
-
-      <div className="bg-[#a166e3] p-4 rounded-md">
-        <p className="text-2xl">Personal Information</p>
-        <p className="text-lg text-gray-200">Your personal info</p>
-
-        <div className="my-8 px-8">
-          <div className="border-b p-2 my-2 flex justify-between hover:cursor-pointer bg-deepPurple">
-            <p>Full Name</p>
-            <p>John Doe</p>
+    <>
+      <TitleCard title="Profile Settings" topMargin="mt-2">
+        <div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <InputText labelTitle="Name" defaultValue="Alex" />
+            <InputText labelTitle="Email Id" defaultValue="alex@dashwind.com" />
+            <InputText labelTitle="Title" defaultValue="UI/UX Designer" />
+            <InputText labelTitle="Place" defaultValue="California" />
+            <TextAreaInput
+              labelTitle="About"
+              defaultValue="Doing what I love, part time traveller"
+            />
           </div>
-          <div className="border-b p-2 my-2 flex justify-between hover:cursor-pointer bg-deepPurple">
-            <p>Email</p>
-            <p>John Doe</p>
+          <div className="divider"></div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <InputText labelTitle="Language" defaultValue="English" />
+            <InputText labelTitle="Timezone" defaultValue="IST" />
+            <ToogleInput labelTitle="Sync Data" defaultValue={true} />
           </div>
-          <div className="border-b p-2 my-2 flex justify-between hover:cursor-pointer bg-deepPurple">
-            <p>Withdrawal Address</p>
-            <p>John Doe</p>
+
+          <div className="mt-16">
+            <button className="btn btn-primary float-right">Update</button>
           </div>
         </div>
-      </div>
-    </div>
+      </TitleCard>
+    </>
   );
-};
+}
 
-export default Profile;
+export default ProfileSettings;

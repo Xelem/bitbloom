@@ -1,120 +1,55 @@
-import * as React from "react";
+import moment from "moment";
+import React, { useState } from "react";
+import DummyData from "../../../utils/dummyData";
+import TitleCard from "../../../components/titleCard";
 
-const Transactions = () => {
+function Transactions() {
+  const [trans, setTrans] = useState(DummyData.RECENT_TRANSACTIONS);
+
   return (
-    <div className="p-8">
-      <h1 className="text-4xl font-semibold mb-8">My Transactions</h1>
-
-      <div className="pb-8 rounded-lg w-[600px] md:w-[100%] bg-mainPurple overflow-auto mr-2">
-        <div className="grid grid-cols-5 mb-4 bg-[#a166e3] rounded-t-lg p-4">
-          <p className="text-xl font-semibold text-center">Transaction ID</p>
-          <p className="text-xl font-semibold text-center">Date</p>
-          <p className="text-xl font-semibold text-center">Amount</p>
-          <p className="text-xl font-semibold text-center">Description</p>
-          <p className="text-xl font-semibold text-center">Status</p>
+    <>
+      <TitleCard title="Recent Transactions" topMargin="mt-2">
+        {/* Team Member list in table format loaded constant */}
+        <div className="overflow-x-auto w-full">
+          <table className="table w-full">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email Id</th>
+                <th>Location</th>
+                <th>Amount</th>
+                <th>Transaction Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {trans.map((l, k) => {
+                return (
+                  <tr key={k}>
+                    <td>
+                      <div className="flex items-center space-x-3">
+                        <div className="avatar">
+                          <div className="mask mask-circle w-12 h-12">
+                            <img src={l.avatar} alt="Avatar" />
+                          </div>
+                        </div>
+                        <div>
+                          <div className="font-bold">{l.name}</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>{l.email}</td>
+                    <td>{l.location}</td>
+                    <td>${l.amount}</td>
+                    <td>{moment(l.date).format("D MMM")}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
-        <div className="grid grid-cols-5 my-3 hover:bg-deepPurple p-2 transition-all duration-200 ease-in-out">
-          <p className="text-white uppercase text-center">45678ihgftyu</p>
-          <p className="text-white uppercase text-center">22/04/24</p>
-          <p className="text-white uppercase text-center">$500</p>
-          <p className="uppercase text-center text-deposit-500 text-green-500">
-            Deposit
-          </p>
-          <p className="uppercase text-center text-green-500">Successful</p>
-        </div>
-        <div className="grid grid-cols-5 my-3 hover:bg-deepPurple p-2 transition-all duration-200 ease-in-out">
-          <p className="text-white uppercase text-center">34567yuhgoiu</p>
-          <p className="text-white uppercase text-center">22/04/24</p>
-          <p className="text-white uppercase text-center">$150</p>
-          <p className="uppercase text-center text-deposit-500 text-red-500">
-            Withdraw
-          </p>
-          <p className="uppercase text-center text-green-500">Successful</p>
-        </div>
-        <div className="grid grid-cols-5 my-3 hover:bg-deepPurple p-2 transition-all duration-200 ease-in-out">
-          <p className="text-white uppercase text-center">34567yuhgoiu</p>
-          <p className="text-white uppercase text-center">22/04/24</p>
-          <p className="text-white uppercase text-center">$150</p>
-          <p className="uppercase text-center text-deposit-500 text-red-500">
-            Withdraw
-          </p>
-          <p className="uppercase text-center text-green-500">Successful</p>
-        </div>
-        <div className="grid grid-cols-5 my-3 hover:bg-deepPurple p-2 transition-all duration-200 ease-in-out">
-          <p className="text-white uppercase text-center">34567yuhgoiu</p>
-          <p className="text-white uppercase text-center">22/04/24</p>
-          <p className="text-white uppercase text-center">$150</p>
-          <p className="uppercase text-center text-deposit-500 text-red-500">
-            Withdraw
-          </p>
-          <p className="uppercase text-center text-green-500">Successful</p>
-        </div>
-        <div className="grid grid-cols-5 my-3 hover:bg-deepPurple p-2 transition-all duration-200 ease-in-out">
-          <p className="text-white uppercase text-center">34567yuhgoiu</p>
-          <p className="text-white uppercase text-center">22/04/24</p>
-          <p className="text-white uppercase text-center">$150</p>
-          <p className="uppercase text-center text-deposit-500 text-red-500">
-            Withdraw
-          </p>
-          <p className="uppercase text-center text-green-500">Successful</p>
-        </div>
-        <div className="grid grid-cols-5 my-3 hover:bg-deepPurple p-2 transition-all duration-200 ease-in-out">
-          <p className="text-white uppercase text-center">34567yuhgoiu</p>
-          <p className="text-white uppercase text-center">22/04/24</p>
-          <p className="text-white uppercase text-center">$150</p>
-          <p className="uppercase text-center text-deposit-500 text-red-500">
-            Withdraw
-          </p>
-          <p className="uppercase text-center text-green-500">Successful</p>
-        </div>
-        <div className="grid grid-cols-5 my-3 hover:bg-deepPurple p-2 transition-all duration-200 ease-in-out">
-          <p className="text-white uppercase text-center">34567yuhgoiu</p>
-          <p className="text-white uppercase text-center">22/04/24</p>
-          <p className="text-white uppercase text-center">$150</p>
-          <p className="uppercase text-center text-deposit-500 text-red-500">
-            Withdraw
-          </p>
-          <p className="uppercase text-center text-green-500">Successful</p>
-        </div>
-        <div className="grid grid-cols-5 my-3 hover:bg-deepPurple p-2 transition-all duration-200 ease-in-out">
-          <p className="text-white uppercase text-center">34567yuhgoiu</p>
-          <p className="text-white uppercase text-center">22/04/24</p>
-          <p className="text-white uppercase text-center">$150</p>
-          <p className="uppercase text-center text-deposit-500 text-red-500">
-            Withdraw
-          </p>
-          <p className="uppercase text-center text-green-500">Successful</p>
-        </div>
-        <div className="grid grid-cols-5 my-3 hover:bg-deepPurple p-2 transition-all duration-200 ease-in-out">
-          <p className="text-white uppercase text-center">34567yuhgoiu</p>
-          <p className="text-white uppercase text-center">22/04/24</p>
-          <p className="text-white uppercase text-center">$150</p>
-          <p className="uppercase text-center text-deposit-500 text-red-500">
-            Withdraw
-          </p>
-          <p className="uppercase text-center text-green-500">Successful</p>
-        </div>
-        <div className="grid grid-cols-5 my-3 hover:bg-deepPurple p-2 transition-all duration-200 ease-in-out">
-          <p className="text-white uppercase text-center">34567yuhgoiu</p>
-          <p className="text-white uppercase text-center">22/04/24</p>
-          <p className="text-white uppercase text-center">$150</p>
-          <p className="uppercase text-center text-deposit-500 text-red-500">
-            Withdraw
-          </p>
-          <p className="uppercase text-center text-green-500">Successful</p>
-        </div>
-        <div className="grid grid-cols-5 my-3 hover:bg-deepPurple p-2 transition-all duration-200 ease-in-out">
-          <p className="text-white uppercase text-center">34567yuhgoiu</p>
-          <p className="text-white uppercase text-center">22/04/24</p>
-          <p className="text-white uppercase text-center">$150</p>
-          <p className="uppercase text-center text-deposit-500 text-red-500">
-            Withdraw
-          </p>
-          <p className="uppercase text-center text-green-500">Successful</p>
-        </div>
-      </div>
-    </div>
+      </TitleCard>
+    </>
   );
-};
+}
 
 export default Transactions;
