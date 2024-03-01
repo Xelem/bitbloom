@@ -1,6 +1,6 @@
 import React from "react";
 
-import { FaChevronDown } from "react-icons/fa";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -41,14 +41,25 @@ const SidebarSubmenu: React.FC<SidebarSubmenuProps> = ({
   return (
     <div className="flex flex-col">
       {/** Route header */}
-      <div className="w-full block" onClick={() => setIsExpanded(!isExpanded)}>
-        {icon} {name}
-        <FaChevronDown
-          className={
-            "w-5 h-5 mt-1 float-right delay-400 duration-500 transition-all  " +
-            (isExpanded ? "rotate-180" : "")
-          }
-        />
+      <div
+        className="w-full flex items-center"
+        onClick={() => setIsExpanded(!isExpanded)}
+      >
+        <div className="mr-2">{icon}</div>
+        {name}
+        {isExpanded ? (
+          <FaChevronUp
+            className={
+              "w-3 h-3 mt-1 float-right delay-400 duration-500 transition-all ml-auto"
+            }
+          />
+        ) : (
+          <FaChevronDown
+            className={
+              "w-3 h-3 mt-1 float-right delay-400 duration-500 transition-all ml-auto"
+            }
+          />
+        )}
       </div>
 
       {/** Submenu list */}
@@ -59,13 +70,16 @@ const SidebarSubmenu: React.FC<SidebarSubmenuProps> = ({
               return (
                 <li key={k}>
                   <Link to={m.path}>
-                    {m.icon} {m.name}
-                    {location.pathname == m.path ? (
-                      <span
-                        className="absolute mt-1 mb-1 inset-y-0 left-0 w-1 rounded-tr-md rounded-br-md bg-primary "
-                        aria-hidden="true"
-                      ></span>
-                    ) : null}
+                    <div className="flex">
+                      <div className="mr-2">{m.icon}</div>
+                      {m.name}
+                      {location.pathname == m.path ? (
+                        <span
+                          className="absolute mt-1 mb-1 inset-y-0 left-0 w-1 rounded-tr-md rounded-br-md bg-primary "
+                          aria-hidden="true"
+                        ></span>
+                      ) : null}
+                    </div>
                   </Link>
                 </li>
               );

@@ -4,6 +4,8 @@ import DashboardStats from "../../../components/dashboardStats";
 import { FaUser } from "react-icons/fa";
 import BarChart from "../../../components/barChart";
 import LineChart from "../../../components/lineChart";
+import Header from "../../../components/Header";
+import LeftSidebar from "../../../components/leftSidebar";
 
 const Dashboard = () => {
   interface statData {
@@ -41,18 +43,26 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="bg-gray-100">
-      {/** ---------------------- Different stats content 1 ------------------------- */}
-      <div className="grid lg:grid-cols-4 mt-2 md:grid-cols-2 grid-cols-1 gap-6">
-        {statsData.map((d, k) => {
-          return <DashboardStats key={k} {...d} colorIndex={k} />;
-        })}
+    <div className="relative">
+      <div>
+        <Header />
       </div>
+      <div className="grid grid-cols-4 bg-gray-200 dark:bg-gray-900">
+        <div className="col-span-1 min-w-full">
+          <LeftSidebar />
+        </div>
+        <div className="col-span-3 p-8">
+          <div className="grid lg:grid-cols-4 mt-2 md:grid-cols-2 grid-cols-1 gap-6">
+            {statsData.map((d, k) => {
+              return <DashboardStats key={k} {...d} colorIndex={k} />;
+            })}
+          </div>
 
-      {/** ---------------------- Different charts ------------------------- */}
-      <div className="grid lg:grid-cols-2 mt-4 grid-cols-1 gap-6">
-        <LineChart />
-        <BarChart />
+          <div className="grid lg:grid-cols-2 mt-4 grid-cols-1 gap-6">
+            <LineChart />
+            <BarChart />
+          </div>
+        </div>
       </div>
     </div>
   );
