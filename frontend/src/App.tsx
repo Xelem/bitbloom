@@ -15,6 +15,7 @@ import Profile from "./pages/user/profile";
 import Transactions from "./pages/user/transactions";
 import Wallet from "./pages/user/wallet";
 import AOS from "aos";
+import Investments from "./pages/user/investments";
 
 function App() {
   useEffect(() => {
@@ -36,6 +37,7 @@ function App() {
         <Route path="/user/profile" element={<Profile />} />
         <Route path="/user/wallet" element={<Wallet />} />
         <Route path="/user/transactions" element={<Transactions />} />
+        <Route path="/user/investments" element={<Investments />} />
       </Route>
     )
   );

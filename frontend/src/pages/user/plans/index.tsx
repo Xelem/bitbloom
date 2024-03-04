@@ -1,4 +1,6 @@
 import * as React from "react";
+import Header from "../../../components/Header";
+import LeftSidebar from "../../../components/leftSidebar";
 
 const Plans = () => {
   type Plan = {
@@ -62,55 +64,67 @@ const Plans = () => {
   ];
 
   return (
-    <div className="p-8">
-      <h1 className="text-4xl font-semibold mb-8">Investment Plans</h1>
+    <div className="relative">
+      <div>
+        <Header />
+      </div>
+      <div className="grid mt-16 md:mt-14 grid-cols-4 bg-gray-200 dark:bg-gray-900">
+        <div className="hidden md:block md:col-span-1 min-w-full">
+          <LeftSidebar />
+        </div>
+        <div className="col-span-4 md:col-span-3 p-4 md:p-8">
+          <p className="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-6">
+            Plans
+          </p>
 
-      <div className="grid md:grid-cols-3 gap-4">
-        {plans.map((item) => (
-          <div
-            className="p-8 rounded-lg bg-mainPurple shadow-md duration-200 ease-in-out hover:-translate-y-2"
-            key={item.package}
-          >
-            <p className="text-gray-200 text-center text-2xl capitalize">
-              {item.package} Package
-            </p>
-            <p className="text-gray-200 text-center text-lg">{item.status}</p>
-            <div className="flex justify-between">
-              <div className=" flex flex-col items-center justify-center">
-                <p className="text-3xl my-1">{item.hourInterest}%</p>
-                <p className="text-sm">Hourly Interest</p>
-              </div>
-              <div className=" flex flex-col items-center justify-center">
-                <p className="text-3xl my-1">{item.duration}</p>
-                <p className="text-sm">Term Days</p>
-              </div>
-            </div>
-            <div className="mt-8 border-t py-4">
-              <div className="flex justify-between my-2">
-                <p className="text-gray-200">Deposit Amount</p>
-                <p>{item.duration} USD</p>
-              </div>
-              <div className="flex justify-between my-2">
-                <p className="text-gray-200">Deposit Type</p>
-                <p>Fixed</p>
-              </div>
-              <div className="flex justify-between my-2">
-                <p className="text-gray-200">Capital Return</p>
-                <p>End of term</p>
-              </div>
-              <div className="flex justify-between my-2">
-                <p className="text-gray-200">Total Return</p>
-                <p>{item.totalInterest}%</p>
-              </div>
+          <div className="grid md:grid-cols-3 gap-4">
+            {plans.map((item) => (
+              <div
+                className="p-8 rounded-lg bg-white dark:bg-base-100 shadow-md duration-200 ease-in-out hover:-translate-y-2  text-gray-700 dark:text-gray-200"
+                key={item.package}
+              >
+                <p className=" text-center text-2xl capitalize">
+                  {item.package} Package
+                </p>
+                <p className=" text-center text-lg">{item.status}</p>
+                <div className="flex justify-between">
+                  <div className=" flex flex-col items-center justify-center">
+                    <p className="text-3xl my-1">{item.hourInterest}%</p>
+                    <p className="text-sm">Hourly Interest</p>
+                  </div>
+                  <div className=" flex flex-col items-center justify-center">
+                    <p className="text-3xl my-1">{item.duration}</p>
+                    <p className="text-sm">Term Days</p>
+                  </div>
+                </div>
+                <div className="mt-8 border-t py-4">
+                  <div className="flex justify-between my-2">
+                    <p className="">Deposit Amount</p>
+                    <p>{item.duration} USD</p>
+                  </div>
+                  <div className="flex justify-between my-2">
+                    <p className="">Deposit Type</p>
+                    <p>Fixed</p>
+                  </div>
+                  <div className="flex justify-between my-2">
+                    <p className="">Capital Return</p>
+                    <p>End of term</p>
+                  </div>
+                  <div className="flex justify-between my-2">
+                    <p className="">Total Return</p>
+                    <p>{item.totalInterest}%</p>
+                  </div>
 
-              <div className="mt-8 flex justify-center">
-                <button className="button bg-[#a166e3] hover:bg-opacity-80">
-                  Invest Now!
-                </button>
+                  <div className="mt-8 flex justify-center">
+                    <button className="button bg-deepPurple text-gray-200 dark:bg-mainPurple hover:bg-opacity-80">
+                      Invest Now!
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );

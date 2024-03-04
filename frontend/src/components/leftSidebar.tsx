@@ -1,63 +1,12 @@
 import React, { useRef } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
-import { MdOutlineDashboard } from "react-icons/md";
-import { IoWalletOutline } from "react-icons/io5";
-import { FaRegMoneyBillAlt, FaRegUserCircle } from "react-icons/fa";
-import { RiExchangeDollarLine } from "react-icons/ri";
-import { LuPackageOpen } from "react-icons/lu";
+import { routes } from "../utils/routes";
 import SidebarSubmenu from "./sidebarSubmenu";
 
 const LeftSidebar = () => {
   const location = useLocation();
   const leftSidebarDrawerRef = useRef<HTMLDivElement>(null);
-
-  interface Route {
-    path: string;
-    icon: React.JSX.Element;
-    name: string;
-    submenu?: Route[];
-  }
-
-  const routes: Route[] = [
-    {
-      path: "/user/dashboard",
-      icon: <MdOutlineDashboard />,
-      name: "Dashboard",
-    },
-    {
-      path: "/user/wallet",
-      icon: <IoWalletOutline />,
-      name: "Wallet",
-    },
-    {
-      path: "/user/transaction",
-      icon: <FaRegMoneyBillAlt />,
-      name: "Transactions",
-    },
-    {
-      path: "/user/investment",
-      icon: <RiExchangeDollarLine />,
-      name: "Investment",
-      submenu: [
-        {
-          path: "/user/plans",
-          icon: <LuPackageOpen />,
-          name: "Plans",
-        },
-        {
-          path: "/user/investment",
-          icon: <LuPackageOpen />,
-          name: "Investments",
-        },
-      ],
-    },
-    {
-      path: "/user/profile",
-      icon: <FaRegUserCircle />,
-      name: "Profile",
-    },
-  ];
 
   const close = () => {
     const leftSidebarDrawer = leftSidebarDrawerRef.current;
@@ -67,8 +16,8 @@ const LeftSidebar = () => {
   };
 
   return (
-    <div className="z-30 h-[100%]">
-      <ul className="menu  pt-2 w-80 bg-base-100 min-h-full text-base-content">
+    <div className={`z-30 h-[100%] fixed`}>
+      <ul className="menu pt-2 w-80 bg-base-100 min-h-full text-base-content">
         <button
           className="btn btn-ghost bg-base-300  btn-circle z-50 top-0 right-0 mt-4 mr-2 absolute lg:hidden"
           onClick={() => close()}
@@ -92,7 +41,9 @@ const LeftSidebar = () => {
                   to={route.path}
                   className={({ isActive }) =>
                     `${
-                      isActive ? "font-semibold  bg-base-200 " : "font-normal"
+                      isActive
+                        ? "font-semibold  bg-base-200 text-lg"
+                        : "font-normal"
                     }`
                   }
                 >

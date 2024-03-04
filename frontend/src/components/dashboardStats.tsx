@@ -13,10 +13,7 @@ const DashboardStats: React.FC<DashboardStatsProps> = ({
   icon,
   value,
   description,
-  colorIndex,
 }) => {
-  const COLORS: string[] = ["primary", "primary"];
-
   const getDescStyle = () => {
     if (description.includes("↗︎"))
       return "font-bold text-green-700 dark:text-green-300";
@@ -29,17 +26,15 @@ const DashboardStats: React.FC<DashboardStatsProps> = ({
     <div className="stats shadow">
       <div className="stat">
         <div
-          className={`stat-figure dark:text-slate-300 text-${
-            COLORS[colorIndex % 2]
-          }`}
+          className={`stat-figure dark:text-slate-300 text-deepPurple
+            `}
         >
           {icon}
         </div>
         <div className="stat-title dark:text-slate-300">{title}</div>
         <div
-          className={`stat-value dark:text-slate-300 text-${
-            COLORS[colorIndex % 2]
-          }`}
+          className={`stat-value dark:text-slate-300 text-deepPurple
+            `}
         >
           {value}
         </div>

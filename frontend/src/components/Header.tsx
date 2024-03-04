@@ -36,16 +36,16 @@ function Header() {
     // navbar fixed  flex-none justify-between bg-base-300  z-10 shadow-md
 
     <>
-      <div className="navbar sticky top-0 bg-base-100  z-10 shadow-md ">
+      <div className="navbar fixed top-0 bg-base-100  z-10 shadow-md ">
         {/* Menu toogle for mobile view or small screen */}
         <div className="flex-1">
           <label
             htmlFor="left-sidebar-drawer"
-            className="btn btn-primary drawer-button lg:hidden"
+            className="btn bg-mainPurple dark:bg-deepPurple drawer-button lg:hidden"
           >
-            <HiBars3 className="h-5 inline-block w-5" />
+            <HiBars3 className="h-5 inline-block w-5 text-white" />
           </label>
-          <div className="flex space-x-2 items-center">
+          <div className="hidden md:flex space-x-2 items-center">
             <img src={Logo} alt="logo" className="h-8 w-8" />
             <h1 className="text-2xl text-gray-700 font-semibold ml-2 dark:text-gray-200">
               CoinGrove

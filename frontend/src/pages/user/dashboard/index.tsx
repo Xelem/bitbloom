@@ -47,11 +47,14 @@ const Dashboard = () => {
       <div>
         <Header />
       </div>
-      <div className="grid grid-cols-4 bg-gray-200 dark:bg-gray-900">
-        <div className="col-span-1 min-w-full">
+      <div className="grid mt-16 md:mt-14 grid-cols-4 bg-gray-200 dark:bg-gray-900">
+        <div className="hidden md:block md:col-span-1 min-w-full">
           <LeftSidebar />
         </div>
-        <div className="col-span-3 p-8">
+        <div className="col-span-4 md:col-span-3 p-4 md:p-8">
+          <p className="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-6">
+            Dashboard
+          </p>
           <div className="grid lg:grid-cols-4 mt-2 md:grid-cols-2 grid-cols-1 gap-6">
             {statsData.map((d, k) => {
               return <DashboardStats key={k} {...d} colorIndex={k} />;
