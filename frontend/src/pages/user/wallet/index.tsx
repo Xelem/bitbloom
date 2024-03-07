@@ -1,20 +1,26 @@
 import React from "react";
+import Select from "react-select";
 import Header from "../../../components/Header";
 import LeftSidebar from "../../../components/leftSidebar";
 import { CiMoneyBill } from "react-icons/ci";
-import { FaCopy, FaRegCopy } from "react-icons/fa";
+import { FaCopy, FaPaste } from "react-icons/fa";
 import DashboardStats from "../../../components/dashboardStats";
 import TitleCard from "../../../components/titleCard";
 
 const Wallet = () => {
-  interface statData {
+  interface StatData {
     title: string;
     value: string;
     icon: React.JSX.Element;
     description: string;
   }
 
-  const statsData: statData[] = [
+  interface DropDownOption {
+    value: string;
+    label: string;
+  }
+
+  const statsData: StatData[] = [
     {
       title: "Available Balance",
       value: "60.7k",
@@ -40,6 +46,50 @@ const Wallet = () => {
       description: "10 days left",
     },
   ];
+
+  const options: DropDownOption[] = [
+    {
+      value: "tfg7980y2b89y28hu80y[0",
+      label: "BTC",
+    },
+    {
+      value: "tfg7980y2b89y28hu80y[0",
+      label: "ETH",
+    },
+    {
+      value: "tfg7980y2b89y28hu80y[0",
+      label: "USDT",
+    },
+  ];
+
+  const selectCustomStyles: any = {
+    control: (provided: any) => ({
+      ...provided,
+
+      border: "1px solid rgb(229 231 235)",
+      borderRadius: 4,
+      boxShadow: "none",
+      "&:hover": {
+        border: "1px solid #aaa",
+      },
+    }),
+    menu: (provided: any) => ({
+      ...provided,
+      borderRadius: 4,
+      boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+      background: "white",
+    }),
+    option: (provided: any) => ({
+      ...provided,
+      background: "white",
+      color: "black",
+      "&:hover": {
+        backgroundColor: "#462C74",
+        color: "white",
+      },
+    }),
+  };
+
   return (
     <div className="relative">
       <div>
@@ -67,9 +117,13 @@ const Wallet = () => {
                   All transactions are done on BSC/BEP 20 smartchain. Please
                   confirm the network or wour funds will be lost.
                 </p>
-                <li>BTC</li>
-                <li>ETH</li>
-                <li>USD</li>
+                <Select
+                  options={options}
+                  styles={selectCustomStyles}
+                  placeholder="Select an option"
+                  className="my-2"
+                />
+
                 <div className="bg-gray-200 px-4 py-2 rounded-md flex items-center">
                   <p>random Address</p>
 
@@ -85,11 +139,26 @@ const Wallet = () => {
                   All transactions are done on BSC/BEP 20 smartchain. Please
                   confirm the network or wour funds will be lost.
                 </p>
-                <li>BTC</li>
-                <li>ETH</li>
-                <li>USD</li>
-                <div className="bg-gray-200 p-2 rounded-md">
-                  <p>random Address</p>
+                <Select
+                  options={options}
+                  styles={selectCustomStyles}
+                  placeholder="Select an option"
+                  className="my-2"
+                />
+
+                <div className="bg-gray-200 px-4 py-2 rounded-md flex items-center">
+                  <input
+                    type="text"
+                    placeholder="Paste your withdrawal address"
+                    className="bg-transparent w-full outline-none"
+                  />
+                  <FaPaste className="ml-auto hover:cursor-pointer" />
+                </div>
+
+                <div className="py-2">
+                  <button className="button bg-deepPurple w-[100%] md:w-auto text-gray-200 dark:bg-mainPurple hover:bg-opacity-80">
+                    Withdraw funds
+                  </button>
                 </div>
                 <div className="divider"></div>
               </div>

@@ -2,7 +2,6 @@ import React from "react";
 import { MdOutlineDashboard } from "react-icons/md";
 import { IoWalletOutline } from "react-icons/io5";
 import { FaRegMoneyBillAlt, FaRegUserCircle } from "react-icons/fa";
-import { RiExchangeDollarLine } from "react-icons/ri";
 import { LuPackageOpen } from "react-icons/lu";
 
 interface Route {
