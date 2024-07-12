@@ -49,6 +49,7 @@ const Signup = () => {
             console.log(data)
             setUser(data.user)
             localStorage.setItem('user', JSON.stringify(data.user))
+            localStorage.setItem('auth', JSON.stringify(data.token))
             navigate('/user/dashboard')
             return data
         } catch (error) {

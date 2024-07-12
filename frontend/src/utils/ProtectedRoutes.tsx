@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
-import Cookies from 'js-cookie'
 import axios from 'axios'
 import { useUser } from '../context/UserContext'
 import { baseURL } from '../constants'
@@ -11,7 +10,7 @@ const ProtectedRoutes: React.FC = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        const jwtToken = Cookies.get('jwt')
+        const jwtToken = localStorage.getItem('auth')
         console.log('JWT Token:', jwtToken) // Debugging line
 
         if (jwtToken || user) {
@@ -19,7 +18,7 @@ const ProtectedRoutes: React.FC = () => {
                 try {
                     const { data } = await axios.get(`${baseURL}/users/me`, {
                         headers: {
-                            Authorization: `Bearer ${jwtToken}`,
+                            Cookie: `jwt=${jwtToken?.split('/')[1]}`,
                         },
                         withCredentials: true,
                     })
