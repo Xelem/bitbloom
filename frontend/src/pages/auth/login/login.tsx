@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { baseURL } from '../../../constants'
 import { ClipLoader } from 'react-spinners'
+import { useUser } from '../../../context/UserContext'
 
 const Login = () => {
     type Focused = {
@@ -21,6 +22,7 @@ const Login = () => {
     const [emailAddress, setEmailAddress] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(false)
+    const { setUser } = useUser()
     const navigate = useNavigate()
 
     const loginUser = async (emailAddress: string, password: string) => {
@@ -35,6 +37,9 @@ const Login = () => {
                 },
             })
             console.log(data)
+            setUser(data.user)
+            localStorage.setItem('user', JSON.stringify(data.user))
+            localStorage.setItem('auth', JSON.stringify(data.token))
             navigate('/user/dashboard')
             return data
         } catch (error) {
