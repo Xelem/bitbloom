@@ -16,7 +16,7 @@ import Transactions from './pages/user/transactions'
 import Wallet from './pages/user/wallet'
 import AOS from 'aos'
 import Investments from './pages/user/investments'
-// import ProtectedRoutes from './utils/ProtectedRoutes'
+import ProtectedRoutes from './utils/ProtectedRoutes'
 
 function App() {
     useEffect(() => {
@@ -33,14 +33,17 @@ function App() {
                 <Route index path="/" element={<Home />} />
                 <Route path="/auth/signup" element={<Signup />} />
                 <Route path="/auth/login" element={<Login />} />
-                {/* <Route element={<ProtectedRoutes />}> */}
-                <Route path="/user/dashboard" element={<Dashboard />} />
-                <Route path="/user/plans" element={<Plans />} />
-                <Route path="/user/profile" element={<Profile />} />
-                <Route path="/user/wallet" element={<Wallet />} />
-                <Route path="/user/transactions" element={<Transactions />} />
-                <Route path="/user/investments" element={<Investments />} />
-                {/* </Route> */}
+                <Route element={<ProtectedRoutes />}>
+                    <Route path="/user/dashboard" element={<Dashboard />} />
+                    <Route path="/user/plans" element={<Plans />} />
+                    <Route path="/user/profile" element={<Profile />} />
+                    <Route path="/user/wallet" element={<Wallet />} />
+                    <Route
+                        path="/user/transactions"
+                        element={<Transactions />}
+                    />
+                    <Route path="/user/investments" element={<Investments />} />
+                </Route>
             </Route>,
         ),
     )

@@ -1,25 +1,18 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Header from '../../../components/Header'
 import InputText from '../../../components/inputText'
 import LeftSidebar from '../../../components/leftSidebar'
 import TitleCard from '../../../components/titleCard'
 import ToogleInput from '../../../components/toogleInput'
 import { useUser } from '../../../context/UserContext'
-import { Navigate } from 'react-router-dom'
 
 function ProfileSettings() {
-    const { user, setUser } = useUser()
-    useEffect(() => {
-        if (!user) {
-            const storedUser = localStorage.getItem('user')
-            if (storedUser) {
-                setUser(JSON.parse(storedUser))
-            }
-        }
-        console.log(user)
-    }, [user, setUser])
+    const { user } = useUser()
 
-    return user ? (
+    // Debugging log to check user state
+    console.log('Current user:', user)
+
+    return (
         <div className="relative">
             <div>
                 <Header />
@@ -33,7 +26,7 @@ function ProfileSettings() {
                         Profile
                     </p>
                     <TitleCard title="Profile Settings" topMargin="mt-2">
-                        <div className=" text-gray-700 dark:text-gray-200">
+                        <div className="text-gray-700 dark:text-gray-200">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <InputText
                                     labelTitle="Full Name"
@@ -80,8 +73,6 @@ function ProfileSettings() {
                 </div>
             </div>
         </div>
-    ) : (
-        <Navigate to={'/auth/login'} />
     )
 }
 
