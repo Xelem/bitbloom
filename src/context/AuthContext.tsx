@@ -14,7 +14,6 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     useEffect(() => {
         const jwtToken = localStorage.getItem('auth')
-        console.log('JWT Token:', jwtToken) // Debugging line
         if (jwtToken) {
             setAuth({ token: jwtToken })
         }

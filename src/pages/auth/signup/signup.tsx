@@ -2,41 +2,50 @@ import React, { useState } from 'react'
 import { LuDot } from 'react-icons/lu'
 import Footer from '../../../components/footer'
 import Navbar from '../../../components/navbar'
-import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { baseURL } from '../../../constants'
 import { ClipLoader } from 'react-spinners'
+import { useNavigate } from 'react-router-dom'
 import { useUser } from '../../../context/UserContext'
 
-const Login = () => {
+const Signup = () => {
     type Focused = {
+        fullName: boolean
         email: boolean
         password: boolean
     }
 
     const [isFocused, setIsFocused] = useState<Focused>({
+        fullName: false,
         email: false,
         password: false,
     })
 
+    const [fullName, setFullName] = useState<string>('')
     const [emailAddress, setEmailAddress] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(false)
     const { setUser } = useUser()
     const navigate = useNavigate()
 
-    const loginUser = async (emailAddress: string, password: string) => {
+    const createNewUser = async (
+        fullName: string,
+        emailAddress: string,
+        password: string,
+    ) => {
         setLoading(true)
         try {
             const { data } = await axios({
                 method: 'POST',
-                url: `${baseURL}/auth/login`,
+                url: `${baseURL}/auth/signup`,
                 data: {
+                    fullName,
                     emailAddress,
                     password,
                 },
+                withCredentials: true,
             })
-            console.log(data)
+
             setUser(data.user)
             localStorage.setItem('user', JSON.stringify(data.user))
             localStorage.setItem('auth', JSON.stringify(data.token))
@@ -47,7 +56,6 @@ const Login = () => {
         }
         setLoading(false)
     }
-
     return (
         <div>
             <Navbar />
@@ -64,7 +72,7 @@ const Login = () => {
 
                     <div className="text-center max-w-lg mx-auto">
                         <h1 className="text-3xl leading-tight font-semibold my-4 md:text-4xl">
-                            Login
+                            Signup
                         </h1>
                     </div>
 
@@ -72,10 +80,42 @@ const Login = () => {
                         className="flex flex-col items-center justify-center my-12"
                         onSubmit={e => {
                             e.preventDefault()
-                            loginUser(emailAddress, password)
+                            createNewUser(fullName, emailAddress, password)
                         }}
                     >
                         <div className="w-[100%] md:w-[50%]">
+                            <div className="relative flex flex-col pt-12 mb-2">
+                                <input
+                                    type="text"
+                                    className="border-b border-white text-white bg-transparent outline-0 z-10 px-1"
+                                    onFocus={() =>
+                                        setIsFocused({
+                                            ...isFocused,
+                                            fullName: true,
+                                        })
+                                    }
+                                    onBlur={() =>
+                                        setIsFocused({
+                                            ...isFocused,
+                                            fullName: false,
+                                        })
+                                    }
+                                    onChange={e => setFullName(e.target.value)}
+                                />
+                                <label
+                                    className={`absolute text-sm italic bottom-0 transition-all duration-200 ease-in-out ${
+                                        !isFocused.fullName
+                                            ? '-translate-y-2'
+                                            : '-translate-y-6'
+                                    }  ${
+                                        fullName == ''
+                                            ? '-translate-y-2'
+                                            : '-translate-y-6'
+                                    }`}
+                                >
+                                    Full Name
+                                </label>
+                            </div>
                             <div className="relative flex flex-col pt-12 mb-2">
                                 <input
                                     type="email"
@@ -146,7 +186,7 @@ const Login = () => {
                             <div className="flex items-center justify-center pt-8">
                                 <button className="button-gradient">
                                     {!loading ? (
-                                        'Login'
+                                        'Signup'
                                     ) : (
                                         <ClipLoader size={20} color="white" />
                                     )}
@@ -154,16 +194,15 @@ const Login = () => {
                             </div>
                         </div>
                     </form>
-
                     <div>
                         <p className="text-center">
-                            Don't have an account?
+                            Already have an account?
                             <a
-                                href="/auth/signup"
+                                href="/auth/login"
                                 className="underline underline-offset-2"
                             >
                                 {' '}
-                                Signup
+                                Login
                             </a>
                         </p>
                     </div>
@@ -174,4 +213,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Signup
